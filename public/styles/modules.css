@@ -1,0 +1,182 @@
+main h1{
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+#menuToggle a:hover
+{
+  color: red;
+}
+
+
+#menuToggle input
+{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  
+  cursor: pointer;
+  
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+  
+  -webkit-touch-callout: none;
+}
+
+
+#menuToggle span
+{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  
+  background: #cdcdcd;
+  border-radius: 3px;
+  
+  z-index: 1;
+  
+  transform-origin: 4px 0px;
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+    background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+    opacity 0.55s ease;
+}
+
+#menuToggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+
+#menuToggle input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+#menuToggle a
+{
+  text-decoration: none;
+  color: #232323;
+  
+  transition: color 0.3s ease;
+}
+
+#menu li
+{
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+#menuToggle input:checked ~ ul
+{
+  transform: none;
+}
+
+.new_header h2{
+
+    color: white;
+    text-align: center;
+    font-size: 1.25rem;
+    width: 100%;  
+  
+}
+
+button{
+
+    width: 50%;
+    font-size: 1.25rem;
+    background-color: black;
+    border: none;
+    color: white;
+    margin-top: 2.5rem;
+    margin-left: 25%;
+    padding: 1.25rem;
+    border-radius: 5px;
+    margin-bottom: 2.5rem;
+    cursor: pointer;
+  
+}
+
+.container img{
+    border: solid #cdcdcd 10px;
+    margin: 2rem auto;
+    width: auto;
+  
+}
+  
+.container h3{
+    color: white;
+    font-size: 1.25rem ;
+    font-weight: bold;
+}
+  
+.container h4{
+  
+    color: black;
+    font-size: 1rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  
+}
+  
+.container p{
+  
+    color: black;
+    font-size: 1.25rem;
+    margin: 2.5rem;
+}
+
+
+footer ul{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+  
+}
+
+footer ul li{
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+}
+  
+  
+footer a{
+    color: white;
+    text-decoration: none;
+    margin: 1.25rem;
+    line-height: 1.6;
+    width: 100%;
+}
+
+.fab{
+    padding-right: 10px;
+    font-size: 1.25rem;
+}
