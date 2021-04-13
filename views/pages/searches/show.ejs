@@ -1,113 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Book App </title>
-    <link rel="stylesheet" href="../../../styles/reset.css">
-    <link rel="stylesheet" href="../../../styles/base.css">
-    <link rel="stylesheet" href="../../../styles/layout.css">
-    <link rel="stylesheet" href="../../../styles/modules.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/1224b18e51.js" crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<%- include('../../layout/head') %>
+
+    <body>
+
+        <%- include('../../layout/header') %>
 
 
-</head>
+            <main>
 
-<body>
+                <div class="new_header">
 
-    <header>
+                    <h2>Search Result</h2>
 
-        <nav role="navigation">
+                </div>
 
 
 
-            <div id="menuToggle">
+                <% book.forEach(e=>{ %>
 
-                <input type="checkbox" />
+                    <section class="container">
 
-                <span></span>
-                <span></span>
-                <span></span>
+                        <section class="img-section">
 
-
-                <ul id="menu">
-                    <a href="/">
-                        <li>Home</li>
-                    </a>
-                    <a href="searches/new">
-                        <li>Search</li>
-                    </a>
-                </ul>
-            </div>
-        </nav>
-
-        <div class="h1">
-
-            <h1>
-                Search Results
-            </h1>
-
-        </div>
-
-
-
-    </header>
-    <main>
-
-        <div class="new_header">
-
-            <h2>Search Result</h2>
-
-        </div>
+                            <a href="<%=e.url%>" target="_blank"><img src="<%= e.img %>" alt="Book Image"></a>
+                        
+                        </section>
+                        
+                        <h3>
+                            <%= e.title %>
+                        </h3>
+                        
+                        <h4>
+                            <%= e.author %>
+                        </h4>
+                        
+                        <h4>
+                            <%= e.isbn %>
+                        </h4>
+                        
+                        <h4>
+                            Book Shelf: <%= e.offShelf%>
+                        </h4>
+                        
+                        <p>
+                            <%= e.description %>
+                        </p>
 
 
 
-        <% book.forEach(e=>{ %>
 
-            <section class="container">
+                        <form action='/books' method="POST" class="form2">
+                            <input name="title" value="<%= e.title %>" class="hidden">
+                            <input name="author" value="<%= e.author %>" class="hidden">
+                            <input name="description" value="<%= e.description %>" class="hidden">
+                            <input name="img" value="<%= e.img %>" class="hidden">
+                            <input name="isbn" value="<%= e.isbn %>" class="hidden">
+                            <input name="offShelf" value="<%= e.offShelf %>" class="hidden">
+                            <input name="url" value="<%= e.url %>" class="hidden">
+                            <button type="submit">Select This Book</button>
 
-                <section class="img-section">
 
-                    <a href="<%=e.url%>" target="_blank"><img src="<%= e.img %>" alt="Book Image"></a>
-
-                </section>
-
-                <h3>
-                    <%= e.title %>
-                </h3>
-
-                <h4>
-                    <%= e.author %>
-                </h4>
-
-                <p>
-                    <%= e.description %>
-                </p>
-
-            </section>
-
-            <% }) %>
+                        </form>
 
 
 
-    </main>
 
-    <footer>
-        <ul>
-            <li><a href="https://www.linkedin.com/in/omar-ewies/" target="_blank"> <i class="fab fa-linkedin"></i>LinkedIn</a></li>
+                    </section>
 
-            <li><a href="https://github.com/oebitw" target="_blank"> <i class="fab fa-github"></i> GitHub</a></li>
-
-            <li><a href="https://stackoverflow.com/users/story/15214052?newreg=a8ee98c0d013469399765dd01ea37366"target="_blank"><i class="fab fa-stack-overflow"></i> Stack Overflow</a> </li>
+                    <% }) %>
 
 
-        </ul>
-    </footer>
 
-</body>
+
+            </main>
+
+            <%- include('../../layout/footer') %>
+
+    </body>
 
 </html>

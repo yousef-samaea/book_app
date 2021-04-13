@@ -122,6 +122,12 @@ button{
   
 }
 
+button a{
+  text-decoration: none;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .container img{
     border: solid #cdcdcd 10px;
     margin: 2rem auto;
@@ -179,4 +185,20 @@ footer a{
 .fab{
     padding-right: 10px;
     font-size: 1.25rem;
+}
+
+
+.form2 button{
+  width: 35%;
+  font-size: 1.25rem;
+  background-color: black;
+  border: none;
+  color: white;
+  margin-top: 2.5rem;
+  margin-right: 22%;
+
+  padding: 1.25rem;
+  border-radius: 5px;
+  margin-bottom: 2.5rem;
+  cursor: pointer;
 }

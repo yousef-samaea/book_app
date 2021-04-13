@@ -88,7 +88,7 @@ header{
 
 .container{
   display: grid;
-  grid-template-rows: auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto auto auto;
   width: 75%;
   background-color: #dddddd;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1);
@@ -110,5 +110,9 @@ footer{
   bottom: 0;
   width: 100%; */
 
+}
+
+.hidden{
+  visibility: hidden;
 }
 
