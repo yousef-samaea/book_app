@@ -21,6 +21,11 @@ const superagent = require('superagent');
 //PG
 const pg = require('pg');
 
+// Method Override
+
+const methodOverride = require('method-override');
+
+
 
 /////////////////////////////
 //// Application Setup    //
@@ -40,9 +45,11 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 // pg client
-//const client = new pg.Client(process.env.DATABASE_URL);
+// const client = new pg.Client(process.env.DATABASE_URL);
 const client = new pg.Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } });
 
+// middle ware to use (put) and (delete) methods
+app.use(methodOverride('_method'));
 
 
 
@@ -70,6 +77,10 @@ app.post('/searches', searchResultsHandler);
 app.post('/books', favBooksHandler);
 
 app.get('/books/:id', singleBookHandler);
+
+app.put('/books/:id', updateHandler);
+
+app.delete('/books/:id', deleteHandler);
 
 app.get('*', notFoundHandler);
 
@@ -168,8 +179,37 @@ function singleBookHandler(req,res){
   client.query(SQL)
     .then(result => {
 
+      console.log(result.rows[0]);
+
       res.render('pages/books/show', { books: result.rows[0]});
     });
+}
+
+// Update Handler
+
+function updateHandler (req,res){
+
+  const id = req.params.id;
+
+  const SQL=`UPDATE books SET title=$1, author=$2, isbn=$3, img=$4, url=$5, description=$6, offShelf=$7 WHERE id=$8 ;`;
+
+  const { title, author, isbn, img , url , description, offShelf } = req.body;
+
+  const safeValues=[title,author, isbn, img , url , description, offShelf, id];
+
+  client.query(SQL,safeValues).then(()=>{
+    res.redirect(`/books/${id}`);
+  });
+
+}
+
+// Delete Handler
+
+function deleteHandler(req,res) {
+  let SQL = `DELETE FROM books WHERE id=$1;`;
+  let value = [req.params.id];
+  client.query(SQL,value)
+    .then(res.redirect('/'));
 }
 
 

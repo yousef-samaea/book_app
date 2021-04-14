@@ -202,3 +202,28 @@ footer a{
   margin-bottom: 2.5rem;
   cursor: pointer;
 }
+
+.up_de_btn{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 75%;
+}
+
+
+
+
+.ud_btn{
+  width: 35%;
+  font-size: 1.25rem;
+  background-color: black;
+  border: none;
+  color: white;
+  margin-top: 1.5rem;
+
+  margin-left: 65%;
+
+  padding: 1.25rem;
+  border-radius: 5px;
+  margin-bottom: 4rem;
+  cursor: pointer;
+}
