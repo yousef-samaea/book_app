@@ -13,6 +13,23 @@
 
         <%- include('./detail') %>
 
+        <div class="up_de_btn">
+
+            <button id="updateBtn" class="ud_btn"> Update Details </button>
+            
+            <form class="dForm" action="/books/<%= books.id %>?_method=DELETE" method="POST">
+                <button type="submit" class="ud_btn">Delete Task</button>
+            </form>
+
+
+        </div>
+
+
+        <%- include('../../layout/edit') %>
+
+
+
+
     </main>
 
 
@@ -26,6 +43,7 @@
 
 
 
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/app.js"></script>
 </body>
 </html>
